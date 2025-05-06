@@ -42,8 +42,8 @@ def deploy(environment) {
 		System.exit(0)
 	}
 
-	bat "docker ps -f name=${containerName} -q | Get-Content --no-run-if-empty docker stop"
-	bat "docker ps -a -f name=${containerName} -q | Get-Content -r docker rm"
+	bat "docker ps -f name=${containerName} -q | xargs --no-run-if-empty docker stop"
+	bat "docker ps -a -f name=${containerName} -q | xargs -r docker rm"
 	bat "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"
 
 }
