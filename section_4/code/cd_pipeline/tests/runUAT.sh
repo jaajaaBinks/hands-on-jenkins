@@ -8,7 +8,8 @@ port=$1
 sleep 5 
 
 # ping the app
-status_code=$(curl --write-out %{http_code} --o /dev/null --silent ${hostname}:${port})
+# status_code=$(curl --write-out %{http_code} --o /dev/null --silent ${hostname}:${port})
+status_code=$(curl --write-out "%{http_code}" -o NUL --silent ${hostname}:${port})
 
 if [ -z $status_code ]; then
     echo "Error: status_code is empty"
