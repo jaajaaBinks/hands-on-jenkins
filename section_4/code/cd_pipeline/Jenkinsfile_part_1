@@ -45,10 +45,9 @@ def deploy(environment) {
 		println "Environment not valid"
 		System.exit(0)
 	}
-
-	bat "${BASH} docker ps -f name=${containerName} -q | xargs --no-run-if-empty docker stop"
-	bat "${BASH} docker ps -a -f name=${containerName} -q | xargs -r docker rm"
-	bat "${BASH} docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"
+	bat '"${BASH}" -c "docker ps -f name=app_dev -q | xargs --no-run-if-empty docker stop"'
+	bat '"${BASH}" -c "docker ps -a -f name=${containerName} -q | xargs -r docker rm"'
+	bat '"${BASH}" -c "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"'
 
 }
 
