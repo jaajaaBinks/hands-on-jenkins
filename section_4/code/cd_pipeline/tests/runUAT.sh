@@ -11,7 +11,7 @@ sleep 5
 status_code=$(curl --write-out %{http_code} --o /dev/null --silent ${hostname}:${port})
 
 if [ -z $status_code ]; then
-    echo "Error: var is empty"
+    echo "Error: status_code is empty"
     exit 1
 fi
 
