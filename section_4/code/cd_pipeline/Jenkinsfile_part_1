@@ -43,7 +43,7 @@ def deploy(environment) {
 	}
 	bat '"C:\\Program Files\\Git\\bin\\bash.exe" -c "docker ps -f name=app_dev -q | xargs --no-run-if-empty docker stop"'
 	bat '"C:\\Program Files\\Git\\bin\\bash.exe" -c "docker ps -a -f name=${containerName} -q | xargs -r docker rm"'
-	bat '"C:\\Program Files\\Git\\bin\\bash.exe" -c "docker run -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"'
+	bat '"C:\\Program Files\\Git\\bin\\bash.exe" -c "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"'
 
 }
 
