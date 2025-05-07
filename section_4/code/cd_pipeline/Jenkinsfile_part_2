@@ -78,5 +78,5 @@ def runUnittests() {
 
 
 def runUAT(port) {
-	bat "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
+	bat "\"C:\\Program Files\\Git\\bin\\bash.exe\" section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
 }
