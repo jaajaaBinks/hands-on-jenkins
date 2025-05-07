@@ -72,11 +72,11 @@ def deploy(environment) {
 
 
 def runUnittests() {
-	sh "pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
-	sh "python3 section_4/code/cd_pipeline/tests/test_flask_app.py"
+	bat "pip3 install --no-cache-dir -r ./section_4/code/cd_pipeline/requirements.txt"
+	bat "python3 section_4/code/cd_pipeline/tests/test_flask_app.py"
 }
 
 
 def runUAT(port) {
-	sh "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
+	bat "section_4/code/cd_pipeline/tests/runUAT.sh ${port}"
 }
