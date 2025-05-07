@@ -3,10 +3,6 @@
 pipeline {
     agent any
 
-    environment {
-        BASH = '"C:\\Program Files\\Git\\bin\\bash.exe"'
-    }
-
     options {
         disableConcurrentBuilds()
     }
@@ -45,9 +41,9 @@ def deploy(environment) {
 		println "Environment not valid"
 		System.exit(0)
 	}
-	bat '"${BASH}" -c "docker ps -f name=app_dev -q | xargs --no-run-if-empty docker stop"'
-	bat '"${BASH}" -c "docker ps -a -f name=${containerName} -q | xargs -r docker rm"'
-	bat '"${BASH}" -c "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"'
+	bat '"C:\Program Files\Git\bin\bash.exe" -c "docker ps -f name=app_dev -q | xargs --no-run-if-empty docker stop"'
+	bat '"C:\Program Files\Git\bin\bash.exe" -c "docker ps -a -f name=${containerName} -q | xargs -r docker rm"'
+	bat '"C:\Program Files\Git\bin\bash.exe" -c "docker run -d -p ${port}:5000 --name ${containerName} hands-on-jenkins/myapp:${BUILD_NUMBER}"'
 
 }
 
