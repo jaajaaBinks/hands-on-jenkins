@@ -10,6 +10,11 @@ sleep 5
 # ping the app
 status_code=$(curl --write-out %{http_code} --o /dev/null --silent ${hostname}:${port})
 
+if [ -z $status_code ]; then
+    echo "Error: var is empty"
+    exit 1
+fi
+
 if [ $status_code == 200 ];
 then
 	echo "PASS: ${hostname}:${port} is reachable"
